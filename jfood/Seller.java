@@ -2,8 +2,8 @@
 /**
  * Write a description of class Seller here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Ridho Gani
+ * @version 5/3/2020
  */
 public class Seller
 {
@@ -12,14 +12,19 @@ public class Seller
     private String name;
     private String email;
     private String phoneNumber;
+    private Location location;
 
     /**
      * Constructor for objects of class Seller
      */
-    public Seller()
+    public Seller(int id, String name, String email, String phoneNumber, Location location)
     {
         // initialise instance variables
-        
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.location = location;
     }
 
     /**
@@ -31,37 +36,50 @@ public class Seller
     public int getId()
     {
         // put your code here
-        return 0;
+        return id;
     }
     public String getName()
     {
         // put your code here
-        return "oke";
+        return name;
     }
     public String getEmail()
     {
         // put your code here
-        return "oke";
+        return email;
     }
     public String getPhoneNumber()
     {
         // put your code here
-        return "oke";
+        return phoneNumber;
+    }
+    public Location getLocation()
+    {
+        // put your code here
+        return location;
     }
     public void setId(int id)
     {
-        
+        this.id = id;
     }
     public void setName(String name)
     {
-        
+        this.name = name;
     }
     public void setEmail(String email)
     {
-        
+        this.email = email;
     }
     public void setPhoneNumber(String phoneNumber)
     {
-        
+        this.phoneNumber = phoneNumber;
+    }
+    public void setLocation(Location location)
+    {
+        this.location = location;
+    }
+    public void printData()
+    {
+        System.out.println(name);
     }
 }
