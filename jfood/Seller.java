@@ -80,6 +80,6 @@ public class Seller
     }
     public void printData()
     {
-        System.out.println(name);
+        System.out.println(getName());
     }
 }

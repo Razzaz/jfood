@@ -25,7 +25,6 @@ public class Food
         this.seller = seller;
         this.price = price;
         this.category = category;
-        
     }
     /**
      * An example of a method - replace this comment with your own
@@ -79,6 +78,6 @@ public class Food
     }
     public void printData()
     {
-       
+       System.out.println(name);
     }
 }
