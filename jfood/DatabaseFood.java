@@ -1,48 +1,32 @@
-
 /**
- * Write a description of class DatabaseFood here.
+ * DatabaseFood is class that contains a list of food.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Ridho Adhadi Gani
+ * @version 
  */
 public class DatabaseFood
 {
-    // instance variables - replace the example below with your own
-    private String[] listFood;
+    
+    private static String[] listFood;
 
-    /**
-     * Constructor for objects of class DatabaseFood
-     */
-    public DatabaseFood()
+    public static boolean addFood(Food food)
     {
-        // initialise instance variables
-        
-    }
-
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public boolean addFood(Food food)
-    {
-        // put your code here
         return false;
     }
-    public boolean removeFood(Food food)
+    
+    public static boolean removeFood(Food food)
     {
-        // put your code here
         return false;
     }
-    public Food getFood()
+    
+    public static Food getFood()
     {
-        // put your code here
         return null;
     }
-    public String[] getListFood()
+    
+    public static String[] getListFood()
     {
-        // put your code here
         return listFood;
     }
+        
 }

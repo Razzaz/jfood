@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.target=DatabaseCustomer
+comment0.text=\r\n\ DatabaseCustomer\ is\ class\ that\ contains\ a\ list\ of\ customer.\r\n\r\n\ @author\ Ridho\ Adhadi\ Gani\r\n\ @version\ \r\n
+comment1.params=customer
+comment1.target=boolean\ addCustomer(Customer)
+comment2.params=customer
+comment2.target=boolean\ removeCustomer(Customer)
+comment3.params=
+comment3.target=java.lang.String[]\ getListCustomer()
+numComments=4

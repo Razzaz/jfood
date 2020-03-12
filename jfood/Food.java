@@ -2,8 +2,8 @@
 /**
  * Write a description of class Food here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Ridho Adhadi Gani
+ * @version 
  */
 public class Food
 {
@@ -11,13 +11,12 @@ public class Food
     private int id;
     private String name;
     private int price;
-    private String category;
     private Seller seller;
-
+    private FoodCategory category;
     /**
      * Constructor for objects of class Food
      */
-    public Food(int id, String name, Seller seller, int price, String category)
+    public Food(int id, String name, Seller seller, int price, FoodCategory category)
     {
         // initialise instance variables
         this.id = id;
@@ -48,12 +47,10 @@ public class Food
     }
     public int getPrice()
     {
-        // put your code here
         return price;
     }
-    public String getCategory()
+    public FoodCategory getCategory()
     {
-        // put your code here
         return category;
     }
     public void setId(int id)
@@ -72,12 +69,19 @@ public class Food
     {
        this.price = price;
     }
-    public void setCategory(String category)
+    public void setCategory(FoodCategory category)
     {
        this.category = category;
     }
     public void printData()
     {
-       System.out.println(name);
+       System.out.println("===============FOOD===============");
+       System.out.println("ID: " + getId());
+       System.out.println("Name: " + getName());
+       System.out.println("Seller: " + getSeller().getName());
+       System.out.println("City: " + getSeller().getLocation().getCity());
+       System.out.println("Price: " + getPrice());
+       System.out.println("Category: " + getCategory().toString());
     }
 }
+

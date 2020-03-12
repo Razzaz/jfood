@@ -1,16 +1,12 @@
 #BlueJ class context
 comment0.target=DatabaseFood
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ DatabaseFood\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
-comment1.params=
-comment1.target=DatabaseFood()
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ DatabaseFood\r\n
+comment0.text=\r\n\ DatabaseFood\ is\ class\ that\ contains\ a\ list\ of\ food.\r\n\r\n\ @author\ Ridho\ Adhadi\ Gani\r\n\ @version\ \r\n
+comment1.params=food
+comment1.target=boolean\ addFood(Food)
 comment2.params=food
-comment2.target=boolean\ addFood(Food)
-comment2.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\r\n\ @param\ \ y\ \ a\ sample\ parameter\ for\ a\ method\r\n\ @return\ \ \ \ the\ sum\ of\ x\ and\ y\r\n
-comment3.params=food
-comment3.target=boolean\ removeFood(Food)
+comment2.target=boolean\ removeFood(Food)
+comment3.params=
+comment3.target=Food\ getFood()
 comment4.params=
-comment4.target=Food\ getFood()
-comment5.params=
-comment5.target=java.lang.String[]\ getListFood()
-numComments=6
+comment4.target=java.lang.String[]\ getListFood()
+numComments=5
