@@ -4,12 +4,12 @@
  * @author Ridho Gani
  * @version 5/3/2020
  */
-public class Invoice
+abstract class Invoice
 {
     private int id;
-    private int idFood;
+    private Food food;
     private String date;
-    private int totalPrice;
+    protected int totalPrice;
     private Customer customer;
     private PaymentType paymentType;
     private InvoiceStatus status;
@@ -17,14 +17,13 @@ public class Invoice
     /**
      * Constructor for objects of class Invoice
      */
-    public Invoice(int id, int idFood, String date, Customer customer, int totalPrice, InvoiceStatus status)
+    public Invoice(int id, Food food, String date, Customer customer, InvoiceStatus status)
     {
         // initialise instance variables
         this.id = id;
-        this.idFood = idFood;
+        this.food = food;
         this.date = date;
         this.customer = customer;
-        this.totalPrice = totalPrice;
         this.status = status;
     }
 
@@ -38,9 +37,9 @@ public class Invoice
     {
         return id;
     }
-    public int getIdFood()
+    public Food getFood()
     {
-        return idFood;
+        return food;
     }
     public String getDate()
     {
@@ -54,10 +53,9 @@ public class Invoice
     {
         return customer;
     }
-    public PaymentType getPaymentType()
-    {
-        return paymentType;
-    }
+    
+    public abstract PaymentType getPaymentType();
+    
     public InvoiceStatus getInvoiceStatus()
     {
         return status;
@@ -66,38 +64,24 @@ public class Invoice
     {
         this.id = id;
     }
-    public void setIdFoods(int idFood)
+    public void setFood(Food food)
     {
-        this.idFood = idFood;
+        this.food = food;
     }
     public void setDate(String date)
     {
         this.date = date;
     }
-    public void setTotalPrice(int totalPrice)
-    {
-        this.totalPrice = totalPrice;
-    }
+    
+    public abstract void setTotalPrice();
+    
     public void setCustomer(Customer customer)
     {
         this.customer = customer;
-    }
-    public void setPaymentType(PaymentType paymentType)
-    {
-        this.paymentType = paymentType;
     }
     public void setInvoiceStatus(InvoiceStatus status)
     {
         this.status = status;
     }
-    public void printData()
-    {
-       System.out.println("===============INVOICE===============");
-       System.out.println("ID: " + getId());
-       System.out.println("Food ID: " + getIdFood());
-       System.out.println("Date: " + getDate());
-       System.out.println("Customer: " + getCustomer().getName());
-       System.out.println("Total Price: " + getTotalPrice());
-        System.out.println("Status: " + getInvoiceStatus());
-    }
+    public abstract void printData();
 }

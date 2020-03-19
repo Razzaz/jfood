@@ -13,15 +13,22 @@ public class JFood
         Location location1 = new Location("Lampung", "Banyak Kopi", "Bandar Lampung");
         Seller seller1 = new Seller(1, "Ridho Gani", "ridhoadhadigani@gmail.com", "082123054525", location1);
         Seller seller2 = new Seller(2, "Gani Ridho", "ridhoadhadigani@gmail.com", "082123054525", location1);
+        Customer customer1 = new Customer(1, "Mocha", "mocha@bear.com", "mochabear", "13 Maret 2020");
+        Promo promo1 = new Promo(1, "1330", 1999, 10000, true);
         Food food1 = new Food(1,"Bakso", seller1, 25000, FoodCategory.Noodles);
-        Customer customer1 = new Customer(1, "Hary", "ridarth@gmail.com", "cisco", "06-03-2020");
-        Invoice invoice1 = new Invoice(1, food1.getId(), "06-03-2020", customer1, food1.getPrice(), InvoiceStatus.Finished);
-        //System.out.println(seller1.getName());
-        //seller1.setName("Rama");
-        //seller1.printData();
-        //food1.printData();
-        invoice1.printData();
-                               
-    } 
+        Food food2 = new Food(2,"Bakso Urat", seller1, 1000, FoodCategory.Noodles);
+        CashlessInvoice cashlessInvoice1 = new CashlessInvoice(1, food1, "19 Maret 2020", customer1, InvoiceStatus.Ongoing);
+        CashlessInvoice cashlessInvoice2 = new CashlessInvoice(2, food2, "19 Maret 2020", customer1, InvoiceStatus.Finished);
+        CashlessInvoice cashlessInvoice3 = new CashlessInvoice(3, food2, "19 Maret 2020", customer1, InvoiceStatus.Finished, promo1);
+        CashlessInvoice cashlessInvoice4 = new CashlessInvoice(4, food1, "19 Maret 2020", customer1, InvoiceStatus.Finished, promo1); 
+        cashlessInvoice1.setTotalPrice();
+        cashlessInvoice2.setTotalPrice();
+        cashlessInvoice3.setTotalPrice();
+        cashlessInvoice4.setTotalPrice();
+        cashlessInvoice1.printData();
+        cashlessInvoice2.printData();
+        cashlessInvoice3.printData();
+        cashlessInvoice4.printData();
+    }   
 
 }
