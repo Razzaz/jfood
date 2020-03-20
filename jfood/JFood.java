@@ -21,14 +21,22 @@ public class JFood
         CashlessInvoice cashlessInvoice2 = new CashlessInvoice(2, food2, "19 Maret 2020", customer1, InvoiceStatus.Finished);
         CashlessInvoice cashlessInvoice3 = new CashlessInvoice(3, food2, "19 Maret 2020", customer1, InvoiceStatus.Finished, promo1);
         CashlessInvoice cashlessInvoice4 = new CashlessInvoice(4, food1, "19 Maret 2020", customer1, InvoiceStatus.Finished, promo1); 
+        CashInvoice cashInvoice1 = new CashInvoice(1, food1, "20 Maret 2020", customer1, InvoiceStatus.Finished);
+        CashInvoice cashInvoice2 = new CashInvoice(1, food1, "20 Maret 2020", customer1, InvoiceStatus.Finished, 4000);
+        
         cashlessInvoice1.setTotalPrice();
         cashlessInvoice2.setTotalPrice();
         cashlessInvoice3.setTotalPrice();
         cashlessInvoice4.setTotalPrice();
-        cashlessInvoice1.printData();
-        cashlessInvoice2.printData();
-        cashlessInvoice3.printData();
-        cashlessInvoice4.printData();
+        cashInvoice1.setTotalPrice();
+        cashInvoice2.setTotalPrice();
+        
+        //cashlessInvoice1.printData();
+        //cashlessInvoice2.printData();
+        //cashlessInvoice3.printData();
+        //cashlessInvoice4.printData();
+        cashInvoice1.printData();
+        cashInvoice2.printData();
     }   
 
 }
