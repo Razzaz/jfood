@@ -63,4 +63,7 @@ public class Location
     {
        System.out.println(province);
     }
+    public String toString(){
+        return "Province = " + province + "\nDescription = " + description + "\nCity = " + city;
+    }
 }

@@ -4,6 +4,11 @@
  * @author Ridho Gani
  * @version 5/3/2020
  */
+
+import java.util.*;
+import java.util.regex.*;
+import java.text.*;
+
 public class Customer
 {
     // instance variables - replace the example below with your own
@@ -11,19 +16,43 @@ public class Customer
     private String name;
     private String email;
     private String password;
-    private String joinDate;
+    private int year;
+    private int month;
+    private int dayOfMonth;
+    private Calendar joinDate;
+    
+    SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
 
     /**
      * Constructor for objects of class Customer
      */
-    public Customer(int id, String name, String email, String password, String joinDate)
+    public Customer(int id, String name, String email, String password, Calendar joinDate)
     {
-        // initialise instance variables
         this.id = id;
         this.name = name;
-        this.email = email;
-        this.password = password;
         this.joinDate = joinDate;
+        
+        setEmail(email);
+        setPassword(password);
+    }
+    
+    public Customer(int id, String name, String email, String password, int year, int month, int dayOfMonth)
+    {
+        this.id = id;
+        this.name = name;
+        this.joinDate = new GregorianCalendar(year,month-1,dayOfMonth);
+        
+        setEmail(email);
+        setPassword(password);
+    }
+    
+    public Customer(int id, String name, String email, String password)
+    {
+        this.id = id;
+        this.name = name;
+        setEmail(email);
+        setPassword(password);
+        this.joinDate = Calendar.getInstance();
     }
 
     /**
@@ -49,7 +78,7 @@ public class Customer
     {
         return password;
     }
-    public String getJoinDate()
+    public Calendar getJoinDate()
     {
         return joinDate;
     }
@@ -63,18 +92,44 @@ public class Customer
     }
     public void setEmail(String email)
     {
-        this.email = email;
+        String regex = "^([\\w\\&\\*_~]+\\.{0,1})+@[\\w][\\w\\-]*(\\.[\\w\\-]+)+$";
+        if(Pattern.matches(regex,email)){
+            this.email = email;
+        }
+        else{
+            this.email = " ";
+        }
     }
     public void setPassword(String password)
     {
-        this.password = password;
+        String regex = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$";
+        if(Pattern.matches(regex,password)){
+            this.password = password;
+        }
+        else{
+            this.password = " ";
+        }
     }
-    public void setJoinDate(String joinDate)
+    public void setJoinDate(Calendar joinDate)
     {
         this.joinDate = joinDate;
     }
-    public void printData()
+    public void setJoinDate(int year, int month, int dayOfMonth)
     {
-       System.out.println(name);
+        this.joinDate = new GregorianCalendar(year, month-1, dayOfMonth);
+    }
+    
+    @Override
+    public String toString()
+    {
+       if(joinDate == null)
+       {
+           return"Id:  "+id+"\nName: "+name+"\nEmail: "+email+"\nPassword: "+password+"\n";
+       }
+        
+       else
+       {   
+           return "Id: " + id + "\nName: " + name + "\nEmail:  " + email + "\nPassword: " +password + "\nJoin Date: " + sdf.format(joinDate.getTime()).toString();
+       }
     }
 }

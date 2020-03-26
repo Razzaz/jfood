@@ -73,4 +73,7 @@ public class Promo
         System.out.println("Active: "+active);
     }
     
+    public String toString(){
+        return "Id = " + id + "\nCode = " + code + "\nDiscount = " + discount + "\nMinPrice =" + minPrice + "\nActive =" + active;
+    }
 }

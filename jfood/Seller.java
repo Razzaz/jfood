@@ -82,4 +82,7 @@ public class Seller
     {
         System.out.println(getName());
     }
+    public String toString(){
+        return "Id = " + id + "\nName = " + name + "\nPhone Number = " + phoneNumber + "\nLocation =" +location;
+    }
 }
