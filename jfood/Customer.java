@@ -16,12 +16,7 @@ public class Customer
     private String name;
     private String email;
     private String password;
-    private int year;
-    private int month;
-    private int dayOfMonth;
     private Calendar joinDate;
-    
-    SimpleDateFormat sdf = new SimpleDateFormat("dd MMMM yyyy");
 
     /**
      * Constructor for objects of class Customer
@@ -38,9 +33,10 @@ public class Customer
     
     public Customer(int id, String name, String email, String password, int year, int month, int dayOfMonth)
     {
+        
         this.id = id;
         this.name = name;
-        this.joinDate = new GregorianCalendar(year,month-1,dayOfMonth);
+        this.joinDate = new GregorianCalendar(year, month-1, dayOfMonth);
         
         setEmail(email);
         setPassword(password);
@@ -50,9 +46,10 @@ public class Customer
     {
         this.id = id;
         this.name = name;
+        //this.joinDate = Calendar.getInstance();
+        
         setEmail(email);
         setPassword(password);
-        this.joinDate = Calendar.getInstance();
     }
 
     /**
@@ -66,30 +63,37 @@ public class Customer
         // put your code here
         return id;
     }
+    
     public String getName()
     {
         return name;
     }
+    
     public String getEmail()
     {
         return email;
     }
+    
     public String getPassword()
     {
         return password;
     }
+    
     public Calendar getJoinDate()
     {
         return joinDate;
     }
+    
     public void setId(int id)
     {
         this.id = id;
     }
+    
     public void setName(String name)
     {
         this.name = name;
     }
+    
     public void setEmail(String email)
     {
         String regex = "^([\\w\\&\\*_~]+\\.{0,1})+@[\\w][\\w\\-]*(\\.[\\w\\-]+)+$";
@@ -97,9 +101,10 @@ public class Customer
             this.email = email;
         }
         else{
-            this.email = " ";
+            this.email = "";
         }
     }
+    
     public void setPassword(String password)
     {
         String regex = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$";
@@ -107,29 +112,31 @@ public class Customer
             this.password = password;
         }
         else{
-            this.password = " ";
+            this.password = "";
         }
     }
-    public void setJoinDate(Calendar joinDate)
+    
+    public void setJoinDate(GregorianCalendar joinDate)
     {
         this.joinDate = joinDate;
     }
+    
     public void setJoinDate(int year, int month, int dayOfMonth)
     {
-        this.joinDate = new GregorianCalendar(year, month-1, dayOfMonth);
+        this.joinDate.set(year, month-1, dayOfMonth);
     }
     
-    @Override
     public String toString()
     {
-       if(joinDate == null)
-       {
-           return"Id:  "+id+"\nName: "+name+"\nEmail: "+email+"\nPassword: "+password+"\n";
+       if(joinDate != null){   
+           SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
+           String string = "Id: "+this.id+"\nNama: "+this.name+"\nEmail: "+email+"\nPassword: "+password+"\nJoin Date: " +
+           dateFormat.format(joinDate.getTime());
+           return string;
        }
-        
-       else
-       {   
-           return "Id: " + id + "\nName: " + name + "\nEmail:  " + email + "\nPassword: " +password + "\nJoin Date: " + sdf.format(joinDate.getTime()).toString();
+       else{
+            String string = "Id: "+this.id+"\nNama: "+this.name+"\nEmail: "+email+"\nPassword: "+password;
+            return string;
        }
     }
 }

@@ -38,50 +38,61 @@ public class Seller
         // put your code here
         return id;
     }
+    
     public String getName()
     {
         // put your code here
         return name;
     }
+    
     public String getEmail()
     {
         // put your code here
         return email;
     }
+    
     public String getPhoneNumber()
     {
         // put your code here
         return phoneNumber;
     }
+    
     public Location getLocation()
     {
         // put your code here
         return location;
     }
+    
     public void setId(int id)
     {
         this.id = id;
     }
+    
     public void setName(String name)
     {
         this.name = name;
     }
+    
     public void setEmail(String email)
     {
         this.email = email;
     }
+    
     public void setPhoneNumber(String phoneNumber)
     {
         this.phoneNumber = phoneNumber;
     }
+    
     public void setLocation(Location location)
     {
         this.location = location;
     }
+    
     public void printData()
     {
         System.out.println(getName());
     }
+    
     public String toString(){
         return "Id = " + id + "\nName = " + name + "\nPhone Number = " + phoneNumber + "\nLocation =" +location;
     }

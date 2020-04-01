@@ -34,35 +34,42 @@ public class Location
         // put your code here
         return province;
     }
+    
     public String getCity()
     {
         // put your code here
         return city;
     }
+    
     public String getDescription()
     {
         // put your code here
         return description;
     }
+    
     public void setProvince(String province)
     {
         // put your code here
         this.province = province;
     }
+    
     public void setCity(String city)
     {
         // put your code here
         this.city = city;
     }
+    
     public void setDescription(String description)
     {
         // put your code here
         this.description = description;
     }
+    
     public void printData()
     {
        System.out.println(province);
     }
+    
     public String toString(){
         return "Province = " + province + "\nDescription = " + description + "\nCity = " + city;
     }

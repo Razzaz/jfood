@@ -4,11 +4,14 @@
  * @author Ridho Gani
  * @version 5/3/2020
  */
-abstract class Invoice
+
+import java.util.*;
+
+public abstract class Invoice
 {
     private int id;
     private Food food;
-    private String date;
+    private Calendar date;
     protected int totalPrice;
     private Customer customer;
     private PaymentType paymentType;
@@ -17,12 +20,12 @@ abstract class Invoice
     /**
      * Constructor for objects of class Invoice
      */
-    public Invoice(int id, Food food, String date, Customer customer, InvoiceStatus status)
+    public Invoice(int id, Food food, Customer customer, InvoiceStatus status)
     {
         // initialise instance variables
         this.id = id;
         this.food = food;
-        this.date = date;
+        this.date = Calendar.getInstance();
         this.customer = customer;
         this.status = status;
     }
@@ -37,18 +40,22 @@ abstract class Invoice
     {
         return id;
     }
+    
     public Food getFood()
     {
         return food;
     }
-    public String getDate()
+    
+    public Calendar getDate()
     {
         return date;
     }
+    
     public int getTotalPrice()
     {
         return totalPrice;
     }
+    
     public Customer getCustomer()
     {
         return customer;
@@ -60,17 +67,20 @@ abstract class Invoice
     {
         return status;
     }
+    
     public void setId(int id)
     {
         this.id = id;
     }
+    
     public void setFood(Food food)
     {
         this.food = food;
     }
-    public void setDate(String date)
+    
+    public void setDate(int year, int month, int dayOfMonth)
     {
-        this.date = date;
+        this.date.set(year, month, dayOfMonth);
     }
     
     public abstract void setTotalPrice();
@@ -79,9 +89,11 @@ abstract class Invoice
     {
         this.customer = customer;
     }
+    
     public void setInvoiceStatus(InvoiceStatus status)
     {
         this.status = status;
     }
-    public abstract void printData();
+    
+    //public abstract String toString();
 }
