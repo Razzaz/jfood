@@ -5,23 +5,26 @@
  * @version 
  */
 
+import java.lang.reflect.Array;
 import java.time.*;
 import java.text.*;
+import java.util.ArrayList;
 
 public class CashInvoice extends Invoice
 {
  
     private static PaymentType PAYMENT_TYPE = PaymentType.Cash;
     private int deliveryFee = 0;
+    //private InvoiceStatus status = InvoiceStatus.Ongoing;
     
-    public CashInvoice(int id, Food food, Customer customer, InvoiceStatus invoiceStatus)
+    public CashInvoice(int id, ArrayList<Food> foods, Customer customer, InvoiceStatus invoiceStatus)
     {
-        super(id, food, customer, invoiceStatus);
+        super(id, foods, customer, invoiceStatus);
     }
     
-    public CashInvoice(int id, Food food, Customer customer, InvoiceStatus invoiceStatus, int deliveryFee)
+    public CashInvoice(int id, ArrayList<Food> foods, Customer customer, InvoiceStatus invoiceStatus, int deliveryFee)
     {
-        super(id, food, customer, invoiceStatus);
+        super(id, foods, customer, invoiceStatus);
         this.deliveryFee = deliveryFee;
     }
 
@@ -45,41 +48,51 @@ public class CashInvoice extends Invoice
      
         if (getDeliveryFee() != 0)
         {
-            this.totalPrice = (getFood().getPrice() + getDeliveryFee());
+            for(Food foods:getFoods()){
+                this.totalPrice += foods.getPrice();
+            }
+            this.totalPrice += getDeliveryFee();
+
         }
         else
         {
-            this.totalPrice = getFood().getPrice();
+            for(Food foods:getFoods()){
+                this.totalPrice = foods.getPrice();
+            }
         }
         
     }
         
-    public String toString()
-    {
-    SimpleDateFormat format1 = new SimpleDateFormat("dd MMMM yyyy");
-    String date = format1.format(getDate().getTime());
-    if (getDeliveryFee() != 0)
-    {
-        return "================Invoice================" + "\n" +
-               "ID: " + getId() + "\n" +
-               "Name: " + getFood().getName() + "\n" +
-               "Date: " + date + "\n" +
-               "Customer: " + getCustomer().getName() + "\n" +
-               "Total Price: " + totalPrice + "\n" +
-               "Status: " + getInvoiceStatus() + "\n" +
-               "Payment Type: " + getPaymentType() + "\n" +
-               "Delivery Fee: " + getDeliveryFee();
-    }
-    else
-    {
-        return "================Invoice================" + "\n" +
-               "ID: " + getId() + "\n" +
-               "Name: " + getFood().getName() + "\n" +
-               "Date: " + date + "\n" +
-               "Customer: " + getCustomer().getName() + "\n" +
-               "Total Price: " + totalPrice + "\n" +
-               "Status: " + getInvoiceStatus() + "\n" +
-               "Payment Type: " + getPaymentType();                     
-    }
+    public String toString() {
+        int tempPrice = 0;
+        String foodName = "";
+        for (Food food: getFoods()){
+            tempPrice += food.getPrice();
+            foodName += food.getName() + ", ";
+        }
+
+        SimpleDateFormat format1 = new SimpleDateFormat("dd MMMM yyyy");
+        String date = format1.format(getDate().getTime());
+        if (getDeliveryFee() != 0) {
+            return  "================Invoice================" + "\n" +
+                    "ID: " + getId() + "\n" +
+                    "Name: " + foodName + "\n" +
+                    "Date: " + date + "\n" +
+                    "Customer: " + getCustomer().getName() + "\n" +
+                    "Total Price: " + totalPrice + "\n" +
+                    "Status: " + getInvoiceStatus() + "\n" +
+                    "Payment Type: " + getPaymentType() + "\n" +
+                    "Delivery Fee: " + getDeliveryFee();
+        }
+        else{
+            return  "================Invoice================" + "\n" +
+                    "ID: " + getId() + "\n" +
+                    "Name: " + foodName + "\n" +
+                    "Date: " + date + "\n" +
+                    "Customer: " + getCustomer().getName() + "\n" +
+                    "Total Price: " + totalPrice + "\n" +
+                    "Status: " + getInvoiceStatus() + "\n" +
+                    "Payment Type: " + getPaymentType();
+        }
     }
 }

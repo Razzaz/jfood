@@ -10,40 +10,35 @@ import java.util.*;
 public abstract class Invoice
 {
     private int id;
-    private Food food;
+    private ArrayList<Food> foods;
     private Calendar date;
     protected int totalPrice;
     private Customer customer;
     private PaymentType paymentType;
-    private InvoiceStatus status;
+    private InvoiceStatus status = InvoiceStatus.Ongoing;
 
     /**
      * Constructor for objects of class Invoice
      */
-    public Invoice(int id, Food food, Customer customer, InvoiceStatus status)
+    public Invoice(int id, ArrayList<Food> foods, Customer customer, InvoiceStatus status)
     {
         // initialise instance variables
         this.id = id;
-        this.food = food;
+        this.foods = foods;
         this.date = Calendar.getInstance();
         this.customer = customer;
         this.status = status;
     }
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
+
     public int getId()
     {
         return id;
     }
     
-    public Food getFood()
+    public ArrayList<Food> getFoods()
     {
-        return food;
+        return foods;
     }
     
     public Calendar getDate()
@@ -73,9 +68,9 @@ public abstract class Invoice
         this.id = id;
     }
     
-    public void setFood(Food food)
+    public void setFoods(ArrayList<Food> foods)
     {
-        this.food = food;
+        this.foods = foods;
     }
     
     public void setDate(int year, int month, int dayOfMonth)
@@ -95,5 +90,5 @@ public abstract class Invoice
         this.status = status;
     }
     
-    //public abstract String toString();
+    public abstract String toString();
 }
