@@ -17,14 +17,14 @@ public class CashInvoice extends Invoice
     private int deliveryFee = 0;
     //private InvoiceStatus status = InvoiceStatus.Ongoing;
     
-    public CashInvoice(int id, ArrayList<Food> foods, Customer customer, InvoiceStatus invoiceStatus)
+    public CashInvoice(int id, ArrayList<Food> foods, Customer customer)
     {
-        super(id, foods, customer, invoiceStatus);
+        super(id, foods, customer);
     }
     
-    public CashInvoice(int id, ArrayList<Food> foods, Customer customer, InvoiceStatus invoiceStatus, int deliveryFee)
+    public CashInvoice(int id, ArrayList<Food> foods, Customer customer, int deliveryFee)
     {
-        super(id, foods, customer, invoiceStatus);
+        super(id, foods, customer);
         this.deliveryFee = deliveryFee;
     }
 

@@ -15,15 +15,16 @@ public class CashlessInvoice extends Invoice
 {
     private static final PaymentType PAYMENT_TYPE = PaymentType.Cashless;
     private Promo promo;
+    private InvoiceStatus status = InvoiceStatus.Ongoing;
     
-    public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer, InvoiceStatus invoiceStatus)
+    public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer)
     {
-        super(id, foods, customer, invoiceStatus);
+        super(id, foods, customer);
     }
     
-    public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer, InvoiceStatus invoiceStatus, Promo promo)
+    public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer, Promo promo)
     {
-        super(id, foods, customer, invoiceStatus);
+        super(id, foods, customer);
         this.promo = promo;
     }
     
@@ -41,7 +42,7 @@ public class CashlessInvoice extends Invoice
     
     public void setTotalPrice() {
         for (Food foods: getFoods()) {
-            if ((promo != null) && (promo.getActive()) && (foods.getPrice() > getPromo().getMinPrice())) {
+            if ((promo != null) && (promo.getActive()) && (foods.getPrice() >= getPromo().getMinPrice())) {
                 super.totalPrice += (foods.getPrice() - promo.getDiscount());
             }
             else {
@@ -69,7 +70,7 @@ public class CashlessInvoice extends Invoice
                    "Date: " + date + "\n" +
                    "Customer: " + getCustomer().getName() + "\n" +
                    "Promo: " + getPromo().getCode() + "\n" +
-                   "Total Price: " + totalPrice + "\n" +
+                   "Total Price: " + tempPrice + "\n" +
                    "Status: " + getInvoiceStatus() + "\n" +
                    "Payment Type: " + getPaymentType() + "\n";
         }

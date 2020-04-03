@@ -20,14 +20,14 @@ public abstract class Invoice
     /**
      * Constructor for objects of class Invoice
      */
-    public Invoice(int id, ArrayList<Food> foods, Customer customer, InvoiceStatus status)
+    public Invoice(int id, ArrayList<Food> foods, Customer customer)
     {
         // initialise instance variables
         this.id = id;
         this.foods = foods;
         this.date = Calendar.getInstance();
         this.customer = customer;
-        this.status = status;
+        //this.status = status;
     }
 
 

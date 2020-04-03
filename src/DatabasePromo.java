@@ -38,6 +38,11 @@ public class DatabasePromo
     }
 
     public static boolean addPromo(Promo promo){
+        for(Promo promos : PROMO_DATABASE){
+            if(promos.getCode().equals(promo.getCode())){
+                return false;
+            }
+        }
         PROMO_DATABASE.add(promo);
         lastId = promo.getId();
         return true;
