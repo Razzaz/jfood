@@ -15,7 +15,7 @@ public abstract class Invoice
     protected int totalPrice;
     private Customer customer;
     private PaymentType paymentType;
-    private InvoiceStatus status = InvoiceStatus.Ongoing;
+    private InvoiceStatus status;
 
     /**
      * Constructor for objects of class Invoice
@@ -27,7 +27,7 @@ public abstract class Invoice
         this.foods = foods;
         this.date = Calendar.getInstance();
         this.customer = customer;
-        //this.status = status;
+        this.status = InvoiceStatus.Ongoing;
     }
 
 

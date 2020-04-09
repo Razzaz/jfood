@@ -15,7 +15,6 @@ public class CashlessInvoice extends Invoice
 {
     private static final PaymentType PAYMENT_TYPE = PaymentType.Cashless;
     private Promo promo;
-    private InvoiceStatus status = InvoiceStatus.Ongoing;
     
     public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer)
     {
@@ -27,7 +26,8 @@ public class CashlessInvoice extends Invoice
         super(id, foods, customer);
         this.promo = promo;
     }
-    
+
+    @Override
     public PaymentType getPaymentType(){
         return PAYMENT_TYPE;
     }
@@ -41,48 +41,47 @@ public class CashlessInvoice extends Invoice
     }
     
     public void setTotalPrice() {
-        for (Food foods: getFoods()) {
-            if ((promo != null) && (promo.getActive()) && (foods.getPrice() >= getPromo().getMinPrice())) {
-                super.totalPrice += (foods.getPrice() - promo.getDiscount());
-            }
-            else {
-                super.totalPrice += foods.getPrice();
-            }
+        super.totalPrice=0;
+        for(Food foods : getFoods())
+        {
+            super.totalPrice=super.totalPrice+foods.getPrice();
+        }
+        if(super.totalPrice>=promo.getMinPrice() && promo.getActive()) {
+            super.totalPrice = super.totalPrice - promo.getDiscount();
         }
     }
-  
+
+    @Override
     public String toString()
     {
-        int tempPrice = 0;
-        String foodName = "";
+        StringBuilder foodName = new StringBuilder();
         for (Food food: getFoods()){
-            tempPrice += food.getPrice();
-            foodName += food.getName() + ", ";
+            foodName.append(food.getName()).append(", ");
         }
 
         SimpleDateFormat format1 = new SimpleDateFormat("dd MMMM yyyy");
         String date = format1.format(getDate().getTime());
-        if (getPromo() != null && getPromo().getActive() && tempPrice > getPromo().getMinPrice())
+        if (getPromo() != null && getPromo().getActive() && totalPrice > getPromo().getMinPrice())
         {
-            return "\n================Invoice================" + "\n" +
-                   "ID: " + getId() + "\n" +
-                   "Name: " + foodName + "\n" +
-                   "Date: " + date + "\n" +
-                   "Customer: " + getCustomer().getName() + "\n" +
-                   "Promo: " + getPromo().getCode() + "\n" +
-                   "Total Price: " + tempPrice + "\n" +
-                   "Status: " + getInvoiceStatus() + "\n" +
-                   "Payment Type: " + getPaymentType() + "\n";
+            return "================Invoice================" + "\n" +
+                   "ID          : " + getId() + "\n" +
+                   "Name        : " + foodName + "\n" +
+                   "Date        : " + date + "\n" +
+                   "Customer    : " + getCustomer().getName() + "\n" +
+                   "Promo       : " + getPromo().getCode() + "\n" +
+                   "Total Price : " + totalPrice + "\n" +
+                   "Status      : " + getInvoiceStatus() + "\n" +
+                   "Payment Type: " + getPaymentType();
         }
         else{
-            return "\n================Invoice================" + "\n" +
-                   "ID: " + getId() + "\n" +
-                   "Name: " + foodName + "\n" +
-                   "Date: " + date + "\n" +
-                   "Customer: " + getCustomer().getName() + "\n" +
-                   "Total Price: " + totalPrice + "\n" +
-                   "Status: " + getInvoiceStatus() + "\n" +
-                   "Payment Type: " + getPaymentType() + "\n";
+            return "================Invoice================" + "\n" +
+                   "ID          : " + getId() + "\n" +
+                   "Name        : " + foodName + "\n" +
+                   "Date        : " + date + "\n" +
+                   "Customer    : " + getCustomer().getName() + "\n" +
+                   "Total Price : " + totalPrice + "\n" +
+                   "Status      : " + getInvoiceStatus() + "\n" +
+                   "Payment Type: " + getPaymentType();
         }
     }
 }

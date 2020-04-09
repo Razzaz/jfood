@@ -87,7 +87,11 @@ public class Food
     
     public String toString()
     {
-       return "Id = " + id + "\nSeller = " + getSeller().getName() + "\nCity = " + getSeller().getLocation().getCity() + "\nPrice =" +price + "\nCategory = " + category;
+       return  "\nID       : " + id +
+               "\nSeller   : " + getSeller().getName() +
+               "\nCity     : " + getSeller().getLocation().getCity() +
+               "\nPrice    : " +price +
+               "\nCategory : " + category;
     }
 }
 

@@ -32,8 +32,9 @@ public class DatabaseInvoice {
     }
 
     public static boolean addInvoice(Invoice invoice){
+        int customerId = invoice.getCustomer().getId();
         for(Invoice invoices : INVOICE_DATABASE){
-            if (invoices.getInvoiceStatus().equals(invoice.getInvoiceStatus())) {
+            if (invoices.getCustomer().getId() == customerId  && invoices.getInvoiceStatus() == InvoiceStatus.Ongoing) {
                 return false;
             }
         }
@@ -44,7 +45,7 @@ public class DatabaseInvoice {
 
     public static boolean changeInvoiceStatus(int id, InvoiceStatus invoiceStatus){
         for(Invoice invoices : INVOICE_DATABASE){
-            if((invoices.getId() == id) && (invoices.getInvoiceStatus() == invoiceStatus)){
+            if((invoices.getId() == id) && (invoices.getInvoiceStatus().equals(InvoiceStatus.Ongoing))){
                 invoices.setInvoiceStatus(invoiceStatus);
                 return true;
             }

@@ -28,6 +28,7 @@ public class CashInvoice extends Invoice
         this.deliveryFee = deliveryFee;
     }
 
+    @Override
     public PaymentType getPaymentType()
     {
         return PAYMENT_TYPE;
@@ -42,56 +43,46 @@ public class CashInvoice extends Invoice
     {
         this.deliveryFee = deliveryFee;
     }
-    
+
+    @Override
     public void setTotalPrice()
     {
-     
-        if (getDeliveryFee() != 0)
+        super.totalPrice=0;
+        for(Food foods : getFoods())
         {
-            for(Food foods:getFoods()){
-                this.totalPrice += foods.getPrice();
-            }
-            this.totalPrice += getDeliveryFee();
-
+            super.totalPrice=super.totalPrice+foods.getPrice();
         }
-        else
-        {
-            for(Food foods:getFoods()){
-                this.totalPrice = foods.getPrice();
-            }
-        }
-        
+        super.totalPrice=super.totalPrice+deliveryFee;
     }
-        
+
+    @Override
     public String toString() {
-        int tempPrice = 0;
-        String foodName = "";
+        StringBuilder foodName = new StringBuilder();
         for (Food food: getFoods()){
-            tempPrice += food.getPrice();
-            foodName += food.getName() + ", ";
+            foodName.append(food.getName()).append(", ");
         }
 
         SimpleDateFormat format1 = new SimpleDateFormat("dd MMMM yyyy");
         String date = format1.format(getDate().getTime());
         if (getDeliveryFee() != 0) {
             return  "================Invoice================" + "\n" +
-                    "ID: " + getId() + "\n" +
-                    "Name: " + foodName + "\n" +
-                    "Date: " + date + "\n" +
-                    "Customer: " + getCustomer().getName() + "\n" +
-                    "Total Price: " + totalPrice + "\n" +
-                    "Status: " + getInvoiceStatus() + "\n" +
+                    "ID          : " + getId() + "\n" +
+                    "Name        : " + foodName + "\n" +
+                    "Date        : " + date + "\n" +
+                    "Customer    : " + getCustomer().getName() + "\n" +
+                    "Total Price : " + totalPrice + "\n" +
+                    "Status      : " + getInvoiceStatus() + "\n" +
                     "Payment Type: " + getPaymentType() + "\n" +
                     "Delivery Fee: " + getDeliveryFee();
         }
         else{
             return  "================Invoice================" + "\n" +
-                    "ID: " + getId() + "\n" +
-                    "Name: " + foodName + "\n" +
-                    "Date: " + date + "\n" +
-                    "Customer: " + getCustomer().getName() + "\n" +
-                    "Total Price: " + totalPrice + "\n" +
-                    "Status: " + getInvoiceStatus() + "\n" +
+                    "ID          : " + getId() + "\n" +
+                    "Name        : " + foodName + "\n" +
+                    "Date        : " + date + "\n" +
+                    "Customer    : " + getCustomer().getName() + "\n" +
+                    "Total Price : " + totalPrice + "\n" +
+                    "Status      : " + getInvoiceStatus() + "\n" +
                     "Payment Type: " + getPaymentType();
         }
     }

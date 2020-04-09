@@ -49,8 +49,8 @@ public class DatabasePromo
     }
 
     public static boolean activatePromo(int id){
-        for (Promo promo : PROMO_DATABASE) {
-            if (!promo.getActive()) {
+        for(Promo promo : PROMO_DATABASE) {
+            if(promo.getId() == id) {
                 promo.setActive(true);
                 return true;
             }

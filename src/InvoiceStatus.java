@@ -6,11 +6,13 @@
  */
 public enum InvoiceStatus
 {
-    Ongoing("Ongoing"), Finished("Finished"), Cancelled("Cancelled");
+    Ongoing("Ongoing"),
+    Finished("Finished"),
+    Cancelled("Cancelled");
     
     private String status;
     
-    private InvoiceStatus(String status)
+    InvoiceStatus(String status)
     {
         this.status = status;
     }

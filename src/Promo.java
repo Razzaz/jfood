@@ -63,17 +63,12 @@ public class Promo
     public void setActive(boolean active){
         this.active = active;
     }
-    
-    public void printData(){
-        System.out.println("=========Promo==========");
-        System.out.println("ID: "+id);
-        System.out.println("Discount: "+discount);
-        System.out.println("Code: "+code);
-        System.out.println("Min Price: "+ minPrice);
-        System.out.println("Active: "+active);
-    }
-    
+
     public String toString(){
-        return "Id = " + id + "\nCode = " + code + "\nDiscount = " + discount + "\nMinPrice =" + minPrice + "\nActive =" + active;
+        return  "\nID      : " + id +
+                "\nCode    : " + code +
+                "\nDiscount: " + discount +
+                "\nMinPrice: " + minPrice +
+                "\nActive  : " + active;
     }
 }
