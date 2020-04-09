@@ -15,7 +15,6 @@ public class CashInvoice extends Invoice
  
     private static PaymentType PAYMENT_TYPE = PaymentType.Cash;
     private int deliveryFee = 0;
-    //private InvoiceStatus status = InvoiceStatus.Ongoing;
     
     public CashInvoice(int id, ArrayList<Food> foods, Customer customer)
     {

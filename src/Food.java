@@ -30,7 +30,7 @@ public class Food
     /**
      * An example of a method - replace this comment with your own
      *
-     * @param  y  a sample parameter for a method
+     * @param    a sample parameter for a method
      * @return    the sum of x and y
      */
     public int getId()
@@ -89,6 +89,7 @@ public class Food
     {
        return  "\nID       : " + id +
                "\nSeller   : " + getSeller().getName() +
+               "\nFood     : " + getName() +
                "\nCity     : " + getSeller().getLocation().getCity() +
                "\nPrice    : " +price +
                "\nCategory : " + category;
