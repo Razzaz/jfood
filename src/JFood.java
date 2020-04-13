@@ -1,18 +1,10 @@
-
-/**
- * Write a description of class JFood here.
- *
- * @author Ridho Gani
- * @version 5/3/2020
- */
-
-import java.util.*;
-import java.util.regex.*;
-import java.text.*;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class JFood
 {
-    public static void main(String args[])
+    public static void main(String[] args)
     {
         Location location1 = new Location("Lampung", "Banyak Kopi", "Bandar Lampung");
 
@@ -20,7 +12,7 @@ public class JFood
         DatabaseSeller.addSeller(new Seller(DatabaseSeller.getLastId()+1, "Ridho Gani", "ridhoadhadigani@gmail.com", "082123054525", location1));
         DatabaseSeller.addSeller(new Seller(DatabaseSeller.getLastId()+1, "Rama", "rama@gmail.com", "082123054525", location1));
         
-        Calendar calendar = new GregorianCalendar(2020, 1, 3);
+        Calendar calendar = new GregorianCalendar(2020, Calendar.FEBRUARY, 3);
 
         try{
             DatabaseCustomer.addCustomer(new Customer(DatabaseCustomer.getLastId()+1, "Rama", "rama@ui.ac.id", "terserah"));
@@ -64,23 +56,23 @@ public class JFood
             System.out.println(e.getMessage());
         }
 
-        System.out.println("\n=========YANG MASUK DATABASE CUSTOMER==========");
-        for(Customer customer : DatabaseCustomer.getCustomerDatabase()) {
-            System.out.println(customer);
-            System.out.println();
-        }
-        System.out.println("=========YANG MASUK DATABASE PROMO==========");
-        for(Promo promo : DatabasePromo.getPromoDatabase()) {
-            System.out.println(promo);
-            System.out.println();
-        }
-        System.out.println("=========YANG MASUK DATABASE FOOD==========");
-        for(Food food : DatabaseFood.getFoodDatabase()) {
-            System.out.println(food);
-            System.out.println();
-        }
+//        System.out.println("\n=========YANG MASUK DATABASE CUSTOMER==========");
+//        for(Customer customer : DatabaseCustomer.getCustomerDatabase()) {
+//            System.out.println(customer);
+//            System.out.println();
+//        }
+//        System.out.println("=========YANG MASUK DATABASE PROMO==========");
+//        for(Promo promo : DatabasePromo.getPromoDatabase()) {
+//            System.out.println(promo);
+//            System.out.println();
+//        }
+//        System.out.println("=========YANG MASUK DATABASE FOOD==========");
+//        for(Food food : DatabaseFood.getFoodDatabase()) {
+//            System.out.println(food);
+//            System.out.println();
+//        }
 
-        ArrayList<Food> food1 = new ArrayList<Food>();
+        ArrayList<Food> food1 = new ArrayList<>();
         try{
             food1.add(DatabaseFood.getFoodById(1));
             food1.add(DatabaseFood.getFoodById(2));
@@ -89,16 +81,20 @@ public class JFood
         }
 
         try{
-            DatabaseInvoice.addInvoice(new CashInvoice(DatabaseInvoice.getLastId()+1, food1, DatabaseCustomer.getCustomerById(1), 1001));
-            DatabaseInvoice.addInvoice(new CashInvoice(DatabaseInvoice.getLastId()+1, food1, DatabaseCustomer.getCustomerById(2), 1001));
-            DatabaseInvoice.addInvoice(new CashInvoice(DatabaseInvoice.getLastId()+1, food1, DatabaseCustomer.getCustomerById(3), 1001));
+            try {
+                DatabaseInvoice.addInvoice(new CashInvoice(DatabaseInvoice.getLastId() + 1, food1, DatabaseCustomer.getCustomerById(1), 1001));
+                DatabaseInvoice.addInvoice(new CashInvoice(DatabaseInvoice.getLastId() + 1, food1, DatabaseCustomer.getCustomerById(1), 1002));
+                //DatabaseInvoice.addInvoice(new CashInvoice(DatabaseInvoice.getLastId()+1, food1, DatabaseCustomer.getCustomerById(3), 1001));
+            }catch (OngoingInvoiceAlreadyExistsException e){ //
+                System.out.println(e.getMessage());
+            }
         }catch (CustomerNotFoundException e){
             System.out.println(e.getMessage());
         }
 
-        for(Invoice invoices : DatabaseInvoice.getInvoiceDatabase()){
-            new Thread(new PriceCalculator(invoices)).start();
-        }
+//        for(Invoice invoices : DatabaseInvoice.getInvoiceDatabase()){
+//            new Thread(new PriceCalculator(invoices)).start();
+//        }
 
         System.out.println("\nList invoice:");
         for(Invoice invoice : DatabaseInvoice.getInvoiceDatabase())
@@ -106,6 +102,12 @@ public class JFood
             invoice.setTotalPrice();
             System.out.println(invoice);
             System.out.println();
+        }
+
+        try{
+            DatabaseInvoice.removeInvoice(10);
+        } catch(InvoiceNotFoundException e){
+            System.out.println(e.getMessage());
         }
     }   
 }

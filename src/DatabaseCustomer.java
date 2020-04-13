@@ -4,12 +4,14 @@ import java.util.ArrayList;
  * DatabaseCustomer is class that contains a list of customer.
  *
  * @author Ridho Adhadi Gani
- * @version 4/2/2020
+ * @version 4/13/2020
  */
+
 public class DatabaseCustomer
 {
     
-    private static ArrayList<Customer> CUSTOMER_DATABASE = new ArrayList<Customer>();
+    private static ArrayList<Customer> CUSTOMER_DATABASE = new ArrayList<>();
+
     private static int lastId = 0;
 
     public static ArrayList<Customer> getCustomerDatabase(){

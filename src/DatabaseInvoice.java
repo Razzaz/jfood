@@ -31,11 +31,11 @@ public class DatabaseInvoice {
         return list;
     }
 
-    public static boolean addInvoice(Invoice invoice){
+    public static boolean addInvoice(Invoice invoice) throws OngoingInvoiceAlreadyExistsException{
         int customerId = invoice.getCustomer().getId();
         for(Invoice invoices : INVOICE_DATABASE){
             if (invoices.getCustomer().getId() == customerId  && invoices.getInvoiceStatus() == InvoiceStatus.Ongoing) {
-                return false;
+                throw new OngoingInvoiceAlreadyExistsException(invoice);
             }
         }
         INVOICE_DATABASE.add(invoice);
@@ -53,7 +53,7 @@ public class DatabaseInvoice {
         return false;
     }
 
-    public static boolean removeInvoice(int id) {
+    public static boolean removeInvoice(int id) throws InvoiceNotFoundException {
         for (int i = 0; i < INVOICE_DATABASE.size(); i++) {
             Invoice invoice = INVOICE_DATABASE.get(i);
             if (invoice.getId() == id) {
@@ -61,6 +61,6 @@ public class DatabaseInvoice {
                 return true;
             }
         }
-        return false;
+        throw new InvoiceNotFoundException(id);
     }
 }
