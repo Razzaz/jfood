@@ -13,6 +13,16 @@ public class DatabaseCustomer
         return CUSTOMER_DATABASE;
     }
 
+    public static Customer getCustomerLogin(String email, String password){
+        for (Customer customer : CUSTOMER_DATABASE){
+            if (customer.getEmail().equals(email) && customer.getPassword().equals(password))
+            {
+                return customer;
+            }
+        }
+        return null;
+    }
+
     public static int getLastId(){
         return lastId;
     }
