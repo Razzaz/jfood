@@ -10,7 +10,7 @@ public class OngoingInvoiceAlreadyExistsException extends Exception {
 
     @Override
     public String getMessage(){
-        return super.getMessage() + invoice_error + "\nalready exist";
+        return super.getMessage() + invoice_error.getFoods() + "already ordered by"+ invoice_error.getCustomer().getName()+"\n";
     };
 
 }
