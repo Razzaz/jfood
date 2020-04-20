@@ -28,9 +28,9 @@ public class JFood {
         //DatabaseCustomer.addCustomer(new Customer(DatabaseCustomer.getLastId()+1, "Ridho Gani", "ridhoadhadigani@gmail.com", "M0chabear", 2019, 3, 26));
         //DatabaseCustomer.addCustomer(new Customer(DatabaseCustomer.getLastId()+1, "Rama", "rama@ui.ac.id", "terserah"));
 
-        ArrayList<Food> food1 = new ArrayList<Food>();
-        food1.add(DatabaseFood.getFoodById(1));
-        food1.add(DatabaseFood.getFoodById(2));
+        //ArrayList<Food> food1 = new ArrayList<Food>();
+        //food1.add(DatabaseFood.getFoodById(1));
+        //food1.add(DatabaseFood.getFoodById(2));
 
         //DatabaseInvoice.addInvoice(new CashlessInvoice(DatabaseInvoice.getLastId()+1, food1, DatabaseCustomer.getCustomerById(1), DatabasePromo.getPromoByCode("BM50")));
         //DatabaseInvoice.addInvoice(new CashlessInvoice(DatabaseInvoice.getLastId()+1, food1, DatabaseCustomer.getCustomerById(2), DatabasePromo.getPromoByCode("BM50")));
