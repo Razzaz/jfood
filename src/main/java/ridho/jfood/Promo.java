@@ -2,7 +2,6 @@ package ridho.jfood;
 
 public class Promo
 {
-    //Instance variables for Customer
     private int id;
     private String code;
     private int discount;

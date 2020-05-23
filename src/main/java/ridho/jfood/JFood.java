@@ -8,23 +8,15 @@ import java.util.ArrayList;
 @SpringBootApplication
 public class JFood {
 
-    public static void main(String[] args) throws SellerNotFoundException, CustomerNotFoundException, FoodNotFoundException, OngoingInvoiceAlreadyExistsException, EmailAlreadyExistsException {
+    public static void main(String[] args) throws SellerNotFoundException, FoodNotFoundException, PromoCodeAlreadyExistsException {
 
-        Location location1 = new Location("Bandar Lampung", "Lampung", "Kopi");
-        Location location2 = new Location("Jakarta Pusat", "Jakarta", "Macet");
-        Location location3 = new Location("Jakarta Barat", "Jakarta", "Macet");
+        Location location1 = new Location("Jakarta Pusat", "Jakarta", "Daerah Khusus Ibukota");
 
         DatabaseSeller.addSeller(new Seller(DatabaseSeller.getLastId()+1, "Ridho Gani", "ridhoadhadigani@gmail.com", "082123054525", location1));
-        DatabaseSeller.addSeller(new Seller(DatabaseSeller.getLastId()+1, "Ridho", "ridhoadhadigani@gmail.com", "082123054525", location2));
-        DatabaseSeller.addSeller(new Seller(DatabaseSeller.getLastId()+1, "Ridho Gani", "ridhoadhadigani@gmail.com", "082123054525", location1));
-        DatabaseSeller.addSeller(new Seller(DatabaseSeller.getLastId()+1, "Rama", "rama@gmail.com", "082123054525", location3));
 
-        DatabaseFood.addFood(new Food(DatabaseFood.getLastId()+1,"Bakso", DatabaseSeller.getSellerById(DatabaseSeller.getLastId()), 241000, FoodCategory.Noodles));
-        DatabaseFood.addFood(new Food(DatabaseFood.getLastId()+1,"Bakso Urat", DatabaseSeller.getSellerById(DatabaseSeller.getLastId()), 1000, FoodCategory.Noodles));
-        DatabaseFood.addFood(new Food(DatabaseFood.getLastId()+1,"Bakso Buntut", DatabaseSeller.getSellerById(DatabaseSeller.getLastId()), 1500, FoodCategory.Noodles));
-        DatabaseFood.addFood(new Food(DatabaseFood.getLastId()+1,"Nasi Goreng", DatabaseSeller.getSellerById(DatabaseSeller.getLastId()), 15000, FoodCategory.Rice));
+        DatabaseFood.addFood(new Food(DatabaseFood.getLastId()+1,"Bakso", DatabaseSeller.getSellerById(DatabaseSeller.getLastId()), 24000, FoodCategory.Noodles));
+        DatabaseFood.addFood(new Food(DatabaseFood.getLastId()+1,"Bakso Urat", DatabaseSeller.getSellerById(DatabaseSeller.getLastId()), 20000, FoodCategory.Noodles));
 
-        //DatabaseCustomer.addCustomer(new Customer(DatabaseCustomer.getLastId()+1, "Ridho Gani", "ridhoadhadigani@gmail.com", "m1lkbeaR", calendar));
         //DatabaseCustomer.addCustomer(new Customer(DatabaseCustomer.getLastId()+1, "Ridho Gani", "ridhoadhadigani@gmail.com", "M0chabear", 2019, 3, 26));
         //DatabaseCustomer.addCustomer(new Customer(DatabaseCustomer.getLastId()+1, "Rama", "rama@ui.ac.id", "terserah"));
 
@@ -32,8 +24,14 @@ public class JFood {
         //food1.add(DatabaseFood.getFoodById(1));
         //food1.add(DatabaseFood.getFoodById(2));
 
+        DatabasePromo.addPromo(new Promo(1, "BM50", 1000, 500, true));
+        DatabasePromo.addPromo(new Promo(2, "BM51", 2000, 100, true));
+
         //DatabaseInvoice.addInvoice(new CashlessInvoice(DatabaseInvoice.getLastId()+1, food1, DatabaseCustomer.getCustomerById(1), DatabasePromo.getPromoByCode("BM50")));
         //DatabaseInvoice.addInvoice(new CashlessInvoice(DatabaseInvoice.getLastId()+1, food1, DatabaseCustomer.getCustomerById(2), DatabasePromo.getPromoByCode("BM50")));
+        //DatabaseInvoice.getInvoiceByCustomer(1).get(DatabaseInvoice.getInvoiceByCustomer(1).size()-1).setTotalPrice();
+
+        DatabaseCustomerPostgre.insertCustomer("ridho","ridhoo@gmail.com","Ridho123");
 
         SpringApplication.run(JFood.class, args);
     }

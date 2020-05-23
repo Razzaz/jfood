@@ -22,9 +22,8 @@ public abstract class Invoice
         this.foods = foods;
         this.date = Calendar.getInstance();
         this.customer = customer;
-        this.status = InvoiceStatus.Ongoing;
+        this.status = InvoiceStatus.Hold;
     }
-
 
     public int getId()
     {

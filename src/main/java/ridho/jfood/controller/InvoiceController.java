@@ -7,6 +7,7 @@ import javax.xml.crypto.Data;
 import java.util.ArrayList;
 
 @RequestMapping("/invoice")
+@CrossOrigin(origins = "*", allowedHeaders = "")
 @RestController
 public class InvoiceController {
 
@@ -40,7 +41,7 @@ public class InvoiceController {
         return invoice;
     }
 
-    @RequestMapping(value = "createCashInvoice", method = RequestMethod.POST)
+    @RequestMapping(value = "/createCashInvoice", method = RequestMethod.POST)
     public Invoice addCashInvoice(@RequestParam(value="foodIdList") ArrayList<Integer> foodIdList,
                                   @RequestParam(value="customerId") int customerId,
                                   @RequestParam(value="deliveryFee", required = false, defaultValue = "0") int deliveryFee)
@@ -55,11 +56,11 @@ public class InvoiceController {
         }
         try {
             Invoice invoice = new CashInvoice(DatabaseInvoice.getLastId()+1, foods,
-                    DatabaseCustomer.getCustomerById(customerId), deliveryFee);
+                    DatabaseCustomerPostgre.getCustomer(customerId), deliveryFee);
             DatabaseInvoice.addInvoice(invoice);
             invoice.setTotalPrice();
             return invoice;
-        } catch (CustomerNotFoundException | OngoingInvoiceAlreadyExistsException e) {
+        } catch (OngoingInvoiceAlreadyExistsException e) {
             System.out.println(e.getMessage());
             return null;
         }
@@ -80,11 +81,11 @@ public class InvoiceController {
         }
         try {
             Invoice invoice = new CashlessInvoice(DatabaseInvoice.getLastId()+1, foods,
-                    DatabaseCustomer.getCustomerById(customerId), DatabasePromo.getPromoByCode(promoCode));
+                    DatabaseCustomerPostgre.getCustomer(customerId), DatabasePromo.getPromoByCode(promoCode));
             DatabaseInvoice.addInvoice(invoice);
             invoice.setTotalPrice();
             return invoice;
-        } catch (CustomerNotFoundException | OngoingInvoiceAlreadyExistsException e) {
+        } catch (OngoingInvoiceAlreadyExistsException e) {
             System.out.println(e.getMessage());
             return null;
         }
