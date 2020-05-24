@@ -22,7 +22,7 @@ public abstract class Invoice
         this.foods = foods;
         this.date = Calendar.getInstance();
         this.customer = customer;
-        this.status = InvoiceStatus.Hold;
+        this.status = InvoiceStatus.Ongoing;
     }
 
     public int getId()

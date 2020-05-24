@@ -4,8 +4,7 @@ public enum InvoiceStatus
 {
     Ongoing("Ongoing"),
     Finished("Finished"),
-    Cancelled("Cancelled"),
-    Hold("Hold");
+    Cancelled("Cancelled");
     
     private String status;
     
