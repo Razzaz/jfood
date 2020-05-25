@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class DatabasePromo
 {
-    private static ArrayList<Promo> PROMO_DATABASE = new ArrayList<Promo>();
+    private static ArrayList<Promo> PROMO_DATABASE = new ArrayList<>();
     private static int lastId = 0;
 
     public static ArrayList<Promo> getPromoDatabase(){

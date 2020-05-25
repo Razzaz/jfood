@@ -32,7 +32,7 @@ public class JFood {
         //DatabaseInvoice.getInvoiceByCustomer(1).get(DatabaseInvoice.getInvoiceByCustomer(1).size()-1).setTotalPrice();
 
         DatabaseCustomerPostgre.insertCustomer("ridho","ridhoo@gmail.com","Ridho123");
-
+        DatabasePromoPostgre.insertPromo("BM50", 50000, 10000, true);
         SpringApplication.run(JFood.class, args);
     }
 

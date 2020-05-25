@@ -11,22 +11,20 @@ import java.util.ArrayList;
 public class PromoController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public ArrayList<Promo> getAllPromo() {
-        return DatabasePromo.getPromoDatabase();
+        return DatabasePromoPostgre.getDatabasePromo();
     }
 
     @RequestMapping(value = "/{code}", method = RequestMethod.GET)
-    public Promo getPromoByCode(@PathVariable String code) throws SellerNotFoundException {
-        return DatabasePromo.getPromoByCode(code);
+    public Promo getPromoByCode(@PathVariable String code) {
+        return DatabasePromoPostgre.getPromo(code);
     }
 
     @RequestMapping(value = "", method = RequestMethod.POST)
     public Promo addPromo(@RequestParam(value="code") String code,
                           @RequestParam(value="discount") int discount,
                           @RequestParam(value="minPrice") int minPrice,
-                          @RequestParam(value="active") boolean active) throws PromoCodeAlreadyExistsException {
-        Promo promo = new Promo(DatabasePromo.getLastId() + 1, code, discount, minPrice, active);
-        DatabasePromo.addPromo(promo);
-        return promo;
+                          @RequestParam(value="active") boolean active) {
+        return DatabasePromoPostgre.insertPromo(code, discount, minPrice, active);
     }
 
 }
