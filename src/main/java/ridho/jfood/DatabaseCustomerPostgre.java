@@ -8,6 +8,8 @@ public class DatabaseCustomerPostgre extends DatabaseConnection {
     private static ArrayList<Customer> CUSTOMER_DATABASE = new ArrayList<Customer>();
 
     public static ArrayList<Customer> getDatabaseCustomer() {
+
+        CUSTOMER_DATABASE.clear();
         Connection c = connection();
         PreparedStatement stmt;
         int id = 0;

@@ -11,6 +11,8 @@ public class DatabasePromoPostgre extends DatabaseConnection {
     private static ArrayList<Promo> PROMO_DATABASE = new ArrayList<>();
 
     public static ArrayList<Promo> getDatabasePromo() {
+
+        PROMO_DATABASE.clear();
         Connection c = connection();
         PreparedStatement stmt;
         int id = 0;
@@ -77,7 +79,7 @@ public class DatabasePromoPostgre extends DatabaseConnection {
         boolean active = false;
         Promo promo = null;
         try {
-            String sql = "SELECT * FROM promo WHERE id=?;";
+            String sql = "SELECT * FROM promo WHERE code=?;";
             stmt = c.prepareStatement(sql);
             stmt.setString(1, code_promo);
             ResultSet rs = stmt.executeQuery();

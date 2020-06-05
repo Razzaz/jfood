@@ -12,6 +12,8 @@ import java.time.*;
 import java.text.*;
 import java.util.ArrayList;
 
+import static java.lang.Math.abs;
+
 public class CashlessInvoice extends Invoice
 {
     private static final PaymentType PAYMENT_TYPE = PaymentType.Cashless;
@@ -48,7 +50,7 @@ public class CashlessInvoice extends Invoice
             super.totalPrice=super.totalPrice+foods.getPrice();
         }
         if(super.totalPrice>=promo.getMinPrice() && promo.getActive()) {
-            super.totalPrice = super.totalPrice - promo.getDiscount();
+            super.totalPrice = abs(super.totalPrice - promo.getDiscount());
         }
     }
 

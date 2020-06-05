@@ -81,7 +81,7 @@ public class InvoiceController {
         }
         try {
             Invoice invoice = new CashlessInvoice(DatabaseInvoice.getLastId()+1, foods,
-                    DatabaseCustomerPostgre.getCustomer(customerId), DatabasePromo.getPromoByCode(promoCode));
+                    DatabaseCustomerPostgre.getCustomer(customerId), DatabasePromoPostgre.getPromo(promoCode));
             DatabaseInvoice.addInvoice(invoice);
             invoice.setTotalPrice();
             return invoice;
