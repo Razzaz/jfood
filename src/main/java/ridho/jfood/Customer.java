@@ -48,7 +48,6 @@ public class Customer
      */
     public Customer(int id, String name, String email, String password, int year, int month, int dayOfMonth)
     {
-        
         this.id = id;
         this.name = name;
         this.joinDate = new GregorianCalendar(year, month-1, dayOfMonth);
