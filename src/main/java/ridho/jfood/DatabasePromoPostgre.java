@@ -6,10 +6,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ * class DatabasePromo
+ * @author Ridho Gani
+ * @version 6/6/2020
+ */
+
 public class DatabasePromoPostgre extends DatabaseConnection {
 
     private static ArrayList<Promo> PROMO_DATABASE = new ArrayList<>();
 
+    /**
+     * Get promo database
+     * @return PROMO_DATABASE
+     */
     public static ArrayList<Promo> getDatabasePromo() {
 
         PROMO_DATABASE.clear();
@@ -43,6 +53,14 @@ public class DatabasePromoPostgre extends DatabaseConnection {
         return PROMO_DATABASE;
     }
 
+    /**
+     * Insert promo
+     * @param code code
+     * @param discount discount
+     * @param minPrice minimum price
+     * @param active status
+     * @return promo
+     */
     public static Promo insertPromo(String code, int discount, int minPrice, boolean active) {
         Connection c = connection();
         PreparedStatement stmt;
@@ -69,6 +87,11 @@ public class DatabasePromoPostgre extends DatabaseConnection {
         return promo;
     }
 
+    /**
+     * Get promo by code
+     * @param code_promo promo code
+     * @return promo
+     */
     public static Promo getPromo(String code_promo) {
         Connection c = connection();
         PreparedStatement stmt;

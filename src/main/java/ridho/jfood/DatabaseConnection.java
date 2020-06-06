@@ -3,6 +3,12 @@ package ridho.jfood;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+/**
+ * class DatabaseConnection
+ * @author Ridho Gani
+ * @version 6/6/2020
+ */
+
 public class DatabaseConnection {
     protected static Connection connection() {
         Connection c = null;

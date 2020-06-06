@@ -3,19 +3,23 @@ package ridho.jfood;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import java.util.ArrayList;
+/**
+ * class JFood
+ * @author Ridho Gani
+ * @version 6/6/2020
+ */
 
 @SpringBootApplication
 public class JFood {
 
-    public static void main(String[] args) throws SellerNotFoundException, FoodNotFoundException, PromoCodeAlreadyExistsException {
+    public static void main(String[] args) throws SellerNotFoundException {
 
         Location location1 = new Location("Jakarta Pusat", "Jakarta", "Daerah Khusus Ibukota");
-        Location location2 = new Location("Jakarta Barat", "Jakarta", "Holywings");
+        //Location location2 = new Location("Jakarta Barat", "Jakarta", "Holywings");
         Location margondaRaya = new Location("Margonda Raya", "Depok", "Jawa Barat");
         Location depok = new Location("Depok", "Depok", "Jawa Barat");
         Location detos = new Location("Depok Town Square", "Depok", "Jawa Barat");
-        Location aksesUI = new Location("Akses UI", "Depok", "Jawa Barat");
+        //Location aksesUI = new Location("Akses UI", "Depok", "Jawa Barat");
         Location kelapaDua = new Location("Kelapa Dua", "Depok", "Jawa Barat");
 
 

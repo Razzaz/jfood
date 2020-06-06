@@ -3,10 +3,20 @@ package ridho.jfood;
 import java.sql.*;
 import java.util.ArrayList;
 
+/**
+ * class DatabaseCustomerPostgre
+ * @author Ridho Gani
+ * @version 6/6/2020
+ */
+
 public class DatabaseCustomerPostgre extends DatabaseConnection {
 
-    private static ArrayList<Customer> CUSTOMER_DATABASE = new ArrayList<Customer>();
+    private static ArrayList<Customer> CUSTOMER_DATABASE = new ArrayList<>();
 
+    /**
+     * Get customer database
+     * @return CUSTOMER_DATABASE
+     */
     public static ArrayList<Customer> getDatabaseCustomer() {
 
         CUSTOMER_DATABASE.clear();
@@ -38,6 +48,13 @@ public class DatabaseCustomerPostgre extends DatabaseConnection {
         return CUSTOMER_DATABASE;
     }
 
+    /**
+     * Insert customer
+     * @param name name
+     * @param email email
+     * @param password password
+     * @return customer
+     */
     public static Customer insertCustomer(String name, String email, String password) {
         Connection c = connection();
         PreparedStatement stmt;
@@ -63,6 +80,10 @@ public class DatabaseCustomerPostgre extends DatabaseConnection {
         return customer;
     }
 
+    /**
+     * Get last customer
+     * @return customer
+     */
     public static int getLastCustomerId() {
         Connection c = connection();
         PreparedStatement stmt;
@@ -83,6 +104,11 @@ public class DatabaseCustomerPostgre extends DatabaseConnection {
         return id;
     }
 
+    /**
+     * Get customer by id
+     * @param id_cust customer id
+     * @return customer
+     */
     public static Customer getCustomer(int id_cust) {
         Connection c = connection();
         PreparedStatement stmt;
@@ -111,6 +137,12 @@ public class DatabaseCustomerPostgre extends DatabaseConnection {
         return customer;
     }
 
+    /**
+     * Get customer
+     * @param email_cust customer emial
+     * @param password_cust customer password
+     * @return customer
+     */
     public static Customer getCustomer(String email_cust, String password_cust) {
         Connection c = connection();
         PreparedStatement stmt;
@@ -141,6 +173,11 @@ public class DatabaseCustomerPostgre extends DatabaseConnection {
         return customer;
     }
 
+    /**
+     * Remove customer boolean.
+     * @param id the id
+     * @return the boolean
+     */
     public static boolean removeCustomer(int id) {
         Connection c = connection();
         PreparedStatement stmt;

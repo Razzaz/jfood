@@ -1,48 +1,71 @@
 package ridho.jfood;
 
-/**
- * Write a description of class CashlessInvoice here.
- *
- * @author Ridho Gani
- * @version 
- */
-
-import java.lang.reflect.Array;
-import java.time.*;
 import java.text.*;
 import java.util.ArrayList;
 
-import static java.lang.Math.abs;
+/**
+ * class CashlessInvoice
+ * @author Ridho Gani
+ * @version 6/6/2020
+ */
 
 public class CashlessInvoice extends Invoice
 {
     private static final PaymentType PAYMENT_TYPE = PaymentType.Cashless;
     private Promo promo;
-    
+
+    /**
+     * Constructor for objects of class CashlessInvoice
+     * @param id id
+     * @param foods foods
+     * @param customer customer
+     */
     public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer)
     {
         super(id, foods, customer);
     }
-    
+
+    /**
+     * Constructor for objects of class CashlessInvoice
+     * @param id id
+     * @param foods foods
+     * @param customer customer
+     * @param promo promo
+     */
     public CashlessInvoice(int id, ArrayList<Food> foods, Customer customer, Promo promo)
     {
         super(id, foods, customer);
         this.promo = promo;
     }
 
+    /**
+     * Get payment type
+     * @return PAYMENT_TYPE
+     */
     @Override
     public PaymentType getPaymentType(){
         return PAYMENT_TYPE;
     }
-    
+
+    /**
+     * Get promo
+     * @return promo
+     */
     public Promo getPromo(){
         return promo;
     }
-    
+
+    /**
+     * Set promo
+     * @param  promo promo
+     */
     public void setPromo(Promo promo){
         this.promo=promo;
     }
-    
+
+    /**
+     * Set total price
+     */
     public void setTotalPrice() {
         super.totalPrice=0;
         for(Food foods : getFoods())
@@ -50,10 +73,16 @@ public class CashlessInvoice extends Invoice
             super.totalPrice=super.totalPrice+foods.getPrice();
         }
         if(super.totalPrice>=promo.getMinPrice() && promo.getActive()) {
-            super.totalPrice = abs(super.totalPrice - promo.getDiscount());
+            super.totalPrice = super.totalPrice - promo.getDiscount();
+            if(super.totalPrice < 0){
+                super.totalPrice = 0;
+            }
         }
     }
 
+    /**
+     * Method toString
+     */
     @Override
     public String toString()
     {

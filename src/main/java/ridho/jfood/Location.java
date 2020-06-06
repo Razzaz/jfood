@@ -1,70 +1,87 @@
 package ridho.jfood;
 
+/**
+ * class Location
+ * @author Ridho Gani
+ * @version 6/6/2020
+ */
+
 public class Location
 {
-    // instance variables - replace the example below with your own
     private String province;
     private String description;
     private String city;
 
     /**
-     * Constructor for objects of class Location
+     * Constructor for objects of class Customer
+     * @param city city
+     * @param province province
+     * @param description description
      */
     public Location(String city, String province, String description)
     {
-        // initialise instance variables
         this.city = city;
         this.province = province;
         this.description = description;
     }
 
     /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
+     * Get province
+     * @return province
      */
     public String getProvince()
     {
-        // put your code here
         return province;
     }
-    
+
+    /**
+     * Get city
+     * @return city
+     */
     public String getCity()
     {
-        // put your code here
         return city;
     }
-    
+
+    /**
+     * Get description
+     * @return description
+     */
     public String getDescription()
     {
-        // put your code here
         return description;
     }
-    
+
+    /**
+     * Set province
+     * @param province province
+     */
     public void setProvince(String province)
     {
-        // put your code here
         this.province = province;
     }
-    
+
+    /**
+     * Set city
+     * @param city city
+     */
     public void setCity(String city)
     {
-        // put your code here
         this.city = city;
     }
-    
+
+    /**
+     * Set description
+     * @param description description
+     */
     public void setDescription(String description)
     {
-        // put your code here
         this.description = description;
     }
-    
-    public void printData()
-    {
-       System.out.println(province);
-    }
-    
+
+    /**
+     * Method toString
+     */
     public String toString(){
         return "Province = " + province + "\nDescription = " + description + "\nCity = " + city;
     }
